@@ -1,0 +1,32 @@
+go 1.20
+
+use (
+	.
+	./examples/bigtable
+	./examples/cockroachdb
+	./examples/consul
+	./examples/datastore
+	./examples/firestore
+	./examples/nginx
+	./examples/pubsub
+	./examples/spanner
+	./examples/toxiproxy
+	./modules/artemis
+	./modules/clickhouse
+	./modules/compose
+	./modules/couchbase
+	./modules/elasticsearch
+	./modules/k3s
+	./modules/kafka
+	./modules/localstack
+	./modules/mariadb
+	./modules/mongodb
+	./modules/mysql
+	./modules/nats
+	./modules/neo4j
+	./modules/postgres
+	./modules/pulsar
+	./modules/redis
+	./modules/redpanda
+	./modules/vault
+)
