@@ -212,3 +212,28 @@ updates:
         day: sunday
       open-pull-requests-limit: 3
       rebase-strategy: disabled
+
+    - package-ecosystem: docker
+      directory: /internal/testcontainersdocker/testdata
+      schedule:
+        interval: daily
+
+    - package-ecosystem: docker
+      directory: /modules/redis/testdata
+      schedule:
+        interval: daily
+
+    - package-ecosystem: docker
+      directory: /testdata
+      schedule:
+        interval: daily
+
+    - package-ecosystem: docker
+      directory: /wait/testdata
+      schedule:
+        interval: daily
+
+    - package-ecosystem: gomod
+      directory: /wait/testdata
+      schedule:
+        interval: daily
