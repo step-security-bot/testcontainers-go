@@ -12,6 +12,11 @@ jobs:
       fail-fast: false
     timeout-minutes: 30
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@1b05615854632b887b69ae1be8cbefe72d3ae423 # v2.6.0
+        with:
+          egress-policy: audit
+
       - name: Create pending status
         uses: actions/github-script@6.4.1
         with:
