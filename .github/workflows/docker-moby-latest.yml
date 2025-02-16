@@ -16,6 +16,11 @@ jobs:
     runs-on: 'ubuntu-latest'
     continue-on-error: true
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
+        with:
+          egress-policy: audit
+
       - name: Set the Docker Install type
         run: |
           echo "docker_install_type=${{ matrix.rootless-docker == true && 'Rootless' || 'Rootful' }}" >> "$GITHUB_ENV"
@@ -35,7 +40,7 @@ jobs:
         run: go mod tidy
 
       - name: Install Nightly Docker
-        uses: docker/setup-docker-action@master
+        uses: docker/setup-docker-action@f96ea45537bec39dc14285d85724cc88531eee16 # master
         with:
           rootless: ${{ matrix.rootless-docker }}
           version: type=image,tag=master
@@ -67,7 +72,7 @@ jobs:
       - name: Notify to Slack on failures
         if: failure()
         id: slack
-        uses: slackapi/slack-github-action@v2.0.0
+        uses: slackapi/slack-github-action@485a9d42d3a73031f12ec201c457e2162c45d02d # v2.0.0
         with:
           payload-templated: true
           payload-file-path: "./payload-slack-content.json"

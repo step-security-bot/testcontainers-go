@@ -47,6 +47,11 @@ jobs:
         platform: ${{ fromJSON(inputs.platforms) }}
     runs-on: ${{ matrix.platform }}
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+
       - name: Setup rootless Docker
         if: ${{ inputs.rootless-docker }}
         uses: docker/setup-docker-action@370a7dad4b8ce8dbf00f9363e1652e5074dd6abe # v4
